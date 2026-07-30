@@ -6,9 +6,42 @@
 
 ---
 
+## Índice
+
+- [1. Sobre o Projeto](#1-sobre-o-projeto)
+- [2. Contexto](#2-contexto)
+- [3. Objetivos](#3-objetivos)
+- [4. Escopo do Projeto](#4-escopo-do-projeto)
+  - [Assuntos abordados](#assuntos-abordados)
+  - [Fora do escopo](#fora-do-escopo)
+- [5. Curadoria de Fontes](#5-curadoria-de-fontes)
+  - [Fontes utilizadas](#fontes-utilizadas)
+  - [Critérios de seleção](#critérios-de-seleção)
+  - [Referências](#referências)
+- [6. Engenharia de Prompts](#6-engenharia-de-prompts)
+- [7. Validação e Testes](#7-validação-e-testes)
+  - [Experimento 1 — Pergunta Genérica](#experimento-1--pergunta-genérica)
+  - [Experimento 2 — Role Prompting e Contextualização do Cenário](#experimento-2--role-prompting-e-contextualização-do-cenário)
+  - [Experimento 3 — Estruturação de Fluxo de Troubleshooting](#experimento-3--estruturação-de-fluxo-de-troubleshooting)
+  - [Experimento 4 — Árvore de Decisão para Diagnóstico](#experimento-4--árvore-de-decisão-para-diagnóstico)
+  - [Experimento 5 — Assistente Interativo de Diagnóstico](#experimento-5--assistente-interativo-de-diagnóstico)
+- [8. Prompts Reutilizáveis](#8-prompts-reutilizáveis)
+  - [Prompt 1 — Diagnóstico Inicial de Acesso Web](#prompt-1--diagnóstico-inicial-de-acesso-web)
+  - [Prompt 2 — Análise de Erros HTTP](#prompt-2--análise-de-erros-http)
+  - [Prompt 3 — Avaliação de Evidências do Chrome DevTools](#prompt-3--avaliação-de-evidências-do-chrome-devtools)
+  - [Prompt 4 — Decisão de Resolução ou Escalonamento](#prompt-4--decisão-de-resolução-ou-escalonamento)
+- [9. Glossário](#9-glossário)
+  - [Ferramentas Utilizadas](#ferramentas-utilizadas)
+- [10. Conclusão](#10-conclusão)  
+
+
 # 1. Sobre o Projeto
 
 Este repositório documenta o processo de construção de uma base de conhecimento no **NotebookLM**, onde foram aplicadas técnicas de **Engenharia de Prompt** para apoiar o diagnóstico de problemas de acesso a aplicações web.
+A base de conhecimento desenvolvida neste projeto está disponível publicamente no NotebookLM.
+
+> **Caderno:**  
+> https://notebooklm.google.com/notebook/a9326a72-1d1b-4851-89d4-9b0d31d30335
 
 ---
 
@@ -24,12 +57,12 @@ Este projeto tem como proposta construir um caderno temático capaz de apoiar An
 
 Os principais objetivos deste projeto são:
 
-- Construir uma base de conhecimento especializada.
-- Explorar os recursos do NotebookLM.
-- Aplicar técnicas de Engenharia de Prompt.
-- Desenvolver prompts reutilizáveis.
-- Avaliar a qualidade das respostas produzidas pela IA.
-- Documentar os aprendizados obtidos durante o processo.
+- Construir uma base de conhecimento especializada;
+- Explorar os recursos do NotebookLM;
+- Aplicar técnicas de Engenharia de Prompt;
+- Desenvolver prompts reutilizáveis;
+- Avaliar a qualidade das respostas produzidas pela IA;
+- Documentar os aprendizados obtidos durante o processo;
 
 ---
 
@@ -39,14 +72,14 @@ Este projeto concentra-se exclusivamente no diagnóstico de problemas relacionad
 
 ## Assuntos abordados
 
-- DNS
-- HTTP e HTTPS
-- VPN
-- Navegadores
-- Autenticação
-- Códigos de resposta HTTP
-- Troubleshooting
-- Escalonamento de incidentes
+- DNS;
+- HTTP e HTTPS;
+- VPN;
+- Navegadores;
+- Autenticação;
+- Códigos de resposta HTTP;
+- Troubleshooting;
+- Escalonamento de incidentes;
 
 ## Fora do escopo
 
@@ -80,10 +113,10 @@ A base de conhecimento utilizada neste projeto foi construída a partir de docum
 
 As fontes foram escolhidas com base nos seguintes critérios:
 
-- Documentação oficial ou amplamente reconhecida pela comunidade técnica.
-- Conteúdo atualizado e mantido por organizações de referência.
-- Material aplicável ao contexto de diagnóstico de problemas de acesso a aplicações web.
-- Cobertura dos principais domínios de conhecimento necessários para um Analista de Suporte N2.
+- Documentação oficial ou amplamente reconhecida pela comunidade técnica;
+- Conteúdo atualizado e mantido por organizações de referência;
+- Material aplicável ao contexto de diagnóstico de problemas de acesso a aplicações web;
+- Cobertura dos principais domínios de conhecimento necessários para um Analista de Suporte N2;
 
 ## Referências
 
@@ -107,7 +140,7 @@ Durante o desenvolvimento foram exploradas técnicas como:
 - Inclusão de contexto específico;
 - Estruturação da resposta esperada;
 - Definição de regras de comportamento;
-- Refinamento iterativo a partir da análise dos resultados obtidos.
+- Refinamento iterativo a partir da análise dos resultados obtidos;
 
 Cada experimento foi utilizado para identificar limitações da abordagem anterior e orientar a construção do próximo prompt, documentando o processo de evolução da interação com o NotebookLM.
 
@@ -146,7 +179,7 @@ O NotebookLM apresentou uma visão abrangente das possíveis causas para problem
 - Segurança;
 - Servidor;
 - Desempenho;
-- Cache e cookies.
+- Cache e cookies;
 
 Além disso, recomendou a utilização do Chrome DevTools como principal ferramenta de investigação, destacando painéis como **Console**, **Network**, **Security**, **Application**, **Elements** e **Sources**.
 
@@ -198,7 +231,7 @@ Com base exclusivamente na base de conhecimento disponível, descreva:
 
 - as hipóteses mais prováveis;
 - quais informações devem ser coletadas;
-- quais testes devem ser realizados antes de qualquer escalonamento.
+- quais testes devem ser realizados antes de qualquer escalonamento;
 ```
 
 ### Resumo da resposta
@@ -213,14 +246,14 @@ As hipóteses apresentadas envolveram:
 - Falhas de execução JavaScript;
 - Problemas relacionados a certificados e protocolos HTTPS;
 - Bloqueios locais de rede;
-- Falhas no carregamento de recursos da aplicação.
+- Falhas no carregamento de recursos da aplicação;
 
 Também apresentou uma sequência mais próxima de um atendimento real:
 
 1. Coleta de evidências utilizando Chrome DevTools;
 2. Análise de Console e Network;
 3. Validação do ambiente do usuário;
-4. Execução de testes antes do escalonamento.
+4. Execução de testes antes do escalonamento;
 
 ### Avaliação
 
@@ -581,7 +614,6 @@ Essas sugestões demonstram que a IA conseguiu identificar informações crític
 ---
 
 # 8. Prompts Reutilizáveis
-# 9. Prompts Reutilizáveis
 
 Os prompts abaixo foram desenvolvidos para serem utilizados durante atendimentos reais de Suporte N2. O analista deve preencher as informações já coletadas no chamado antes de enviar o prompt ao NotebookLM.
 
@@ -646,7 +678,7 @@ Com base nessas informações:
 - indique os próximos testes;
 - explique o motivo de cada teste;
 - informe quais evidências deverão ser anexadas ao chamado;
-- indique se já existem informações suficientes para resolução ou se a investigação deve continuar.
+- indique se já existem informações suficientes para resolução ou se a investigação deve continuar;
 ```
 
 ---
@@ -694,7 +726,7 @@ Com base nessas informações:
 - identifique quais hipóteses possuem maior probabilidade;
 - indique quais testes ainda devem ser executados;
 - informe quais evidências técnicas ainda precisam ser coletadas;
-- conclua se o incidente pode ser tratado pelo Suporte N2 ou deve ser escalonado.
+- conclua se o incidente pode ser tratado pelo Suporte N2 ou deve ser escalonado;
 ```
 
 ---
@@ -760,7 +792,7 @@ Com base nas evidências:
 - descarte hipóteses incompatíveis com as evidências;
 - informe quais testes ainda precisam ser executados;
 - indique quais evidências faltam para concluir o diagnóstico;
-- apresente uma recomendação técnica para continuidade do atendimento.
+- apresente uma recomendação técnica para continuidade do atendimento;
 ```
 
 ---
@@ -818,7 +850,7 @@ Com base nessas informações:
 - justifique tecnicamente sua conclusão;
 - informe se o chamado deve ser resolvido pelo Suporte N2 ou escalonado;
 - caso seja necessário escalonar, indique qual equipe deve receber o chamado;
-- gere um resumo técnico que possa ser copiado para o ticket do incidente.
+- gere um resumo técnico que possa ser copiado para o ticket do incidente;
 ```
 
 ---
@@ -829,7 +861,7 @@ Os campos entre colchetes (`[ ]`) devem ser preenchidos pelo Analista de Suporte
 
 ---
 
-# 10. Glossário
+# 9. Glossário
 
 Este glossário apresenta os principais conceitos relacionados à Engenharia de Prompt e às ferramentas utilizadas durante o desenvolvimento deste projeto.
 
@@ -863,7 +895,7 @@ Este glossário apresenta os principais conceitos relacionados à Engenharia de 
 
 ---
 
-## 11. Conclusão
+## 10. Conclusão
 
 O desenvolvimento deste projeto demonstrou que a qualidade das respostas produzidas por uma Inteligência Artificial depende diretamente da forma como as instruções são elaboradas. Ao longo dos experimentos realizados no NotebookLM, foi possível observar a evolução das respostas à medida que técnicas de Engenharia de Prompt foram aplicadas de forma incremental, transformando respostas inicialmente genéricas em fluxos de investigação estruturados e orientados ao contexto de Suporte N2.
 
@@ -874,3 +906,21 @@ Os experimentos também evidenciaram a importância de orientar a IA por meio de
 Como resultado, o projeto entrega um material que pode servir tanto como guia de estudos quanto como apoio operacional para Analistas de Suporte N2, contribuindo para diagnósticos mais consistentes, padronização do processo de troubleshooting e maior eficiência na condução de incidentes relacionados ao acesso a aplicações web.
 
 Como evolução futura, a base de conhecimento poderá ser ampliada com novos cenários de troubleshooting, estudos de caso, integrações com outras tecnologias e novos experimentos de Engenharia de Prompt, tornando o assistente cada vez mais especializado e aderente às rotinas de suporte técnico.
+
+### * Aprendizados *
+
+Durante este projeto desenvolvi conhecimentos sobre:
+
+• Engenharia de Prompt;
+
+• NotebookLM;
+
+• Construção de bases de conhecimento;
+
+• Troubleshooting;
+
+• Diagnóstico de aplicações web;
+
+• Documentação técnica;
+
+• Experimentação orientada por evidências;
