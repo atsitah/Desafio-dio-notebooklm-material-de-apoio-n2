@@ -170,6 +170,102 @@ A principal limitação observada foi a ausência de um processo estruturado de 
 
 No próximo teste será utilizada a técnica de **Role Prompting**, definindo explicitamente que o NotebookLM deve atuar como um Analista de Suporte N2 especializado em aplicações web. O objetivo é verificar se essa mudança torna o diagnóstico mais orientado ao processo de investigação utilizado em atendimentos reais.
 
+## Experimento 2 — Role Prompting e Contextualização do Cenário
+
+### Objetivo
+
+Avaliar como a definição de um papel específico para o NotebookLM influencia a qualidade das respostas geradas.
+
+Neste experimento foi adicionado um contexto profissional, simulando um cenário real de atendimento de Suporte N2, com o objetivo de verificar se a IA produziria uma resposta mais próxima de um processo estruturado de troubleshooting.
+
+### Técnica aplicada
+
+Foram utilizadas as seguintes técnicas de Engenharia de Prompt:
+
+- **Role Prompting:** definição da IA como Analista de Suporte N2 especializado em aplicações web.
+- **Contextualização:** descrição de um cenário real de incidente.
+- **Definição de formato esperado:** solicitação de hipóteses, coleta de informações e testes antes do escalonamento.
+- **Restrição de conhecimento:** utilização exclusiva da base de conhecimento carregada no NotebookLM.
+
+### Prompt utilizado
+
+```text
+Você é um Analista de Suporte N2 especializado em aplicações web.
+
+Um usuário informa que não consegue acessar um sistema web. A internet funciona normalmente e outros usuários conseguem acessar o sistema.
+
+Com base exclusivamente na base de conhecimento disponível, descreva:
+
+- as hipóteses mais prováveis;
+- quais informações devem ser coletadas;
+- quais testes devem ser realizados antes de qualquer escalonamento.
+```
+
+### Resumo da resposta
+
+A resposta apresentou uma evolução significativa em relação ao primeiro experimento.
+
+O NotebookLM passou a estruturar o diagnóstico considerando que o problema estava isolado em um único usuário, direcionando a investigação para possíveis causas relacionadas ao ambiente cliente (*client-side*).
+
+As hipóteses apresentadas envolveram:
+
+- Cookies, cache e armazenamento local;
+- Falhas de execução JavaScript;
+- Problemas relacionados a certificados e protocolos HTTPS;
+- Bloqueios locais de rede;
+- Falhas no carregamento de recursos da aplicação.
+
+Também apresentou uma sequência mais próxima de um atendimento real:
+
+1. Coleta de evidências utilizando Chrome DevTools;
+2. Análise de Console e Network;
+3. Validação do ambiente do usuário;
+4. Execução de testes antes do escalonamento.
+
+### Avaliação
+
+| Critério | Avaliação | Observação |
+|----------|-----------|------------|
+| Precisão técnica | ✅ Excelente | As hipóteses estão alinhadas com a base de conhecimento. |
+| Contextualização | ✅ Excelente | A definição do papel aproximou a resposta do cenário de Suporte N2. |
+| Estrutura do diagnóstico | ✅ Boa | A resposta seguiu uma sequência lógica de investigação. |
+| Aplicabilidade operacional | ✅ Boa | Foram sugeridos testes antes do escalonamento. |
+| Profundidade técnica | ⚠️ Parcial | Alguns testes poderiam apresentar mais detalhes operacionais. |
+
+### Comparação com o Experimento 1
+
+A utilização de Role Prompting apresentou uma melhoria significativa na qualidade da resposta.
+
+No primeiro experimento, a IA apresentou uma explicação técnica ampla sobre possíveis causas de falha de acesso.
+
+Neste experimento, a resposta passou a simular um processo de troubleshooting, considerando contexto, hipóteses, coleta de evidências e ações antes do escalonamento.
+
+### Cicatriz
+
+Apesar da evolução da resposta, foi identificado que a IA ainda apresenta algumas limitações:
+
+- Algumas recomendações possuem nível técnico elevado para uma interação inicial com o usuário.
+- Não existe uma priorização clara das hipóteses mais prováveis.
+- A sequência de investigação poderia ser mais orientada por perguntas iniciais ao usuário.
+- Alguns testes poderiam apresentar critérios objetivos de sucesso ou falha.
+
+### Sugestões de refinamento
+
+A partir das limitações identificadas, o próximo experimento deve explorar a criação de um fluxo de diagnóstico mais estruturado, solicitando que a IA:
+
+- faça perguntas iniciais antes de sugerir testes;
+- priorize hipóteses por probabilidade;
+- organize o atendimento em etapas;
+- indique critérios para escalonamento.
+
+### Sugestões de novos prompts gerados pelo NotebookLM
+
+Durante a interação, a própria IA sugeriu novos caminhos de investigação:
+
+- Como limpar cookies e o armazenamento local no Chrome DevTools?
+- Quais códigos de erro no painel Network indicam falha local?
+- Como identificar problemas de certificado usando o painel Security?
+
 ---
 
 # 8. Cicatrizes
