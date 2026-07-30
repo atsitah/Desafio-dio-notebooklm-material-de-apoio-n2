@@ -121,6 +121,55 @@ A cada iteração, novas instruções foram adicionadas ao prompt para observar 
 
 Os experimentos foram conduzidos de forma incremental, permitindo comparar a evolução das respostas e identificar quais técnicas produziram maior ganho na condução do diagnóstico.
 
+### Experimento 1 — Pergunta Genérica
+
+#### Objetivo
+
+Avaliar o comportamento padrão do NotebookLM diante de uma pergunta ampla, sem contexto adicional ou instruções específicas sobre o formato da resposta.
+
+#### Técnica aplicada
+
+- Pergunta aberta (*Open Prompt*)
+
+#### Prompt utilizado
+
+```text
+Por que um usuário não consegue acessar um sistema web e como investigar esse problema?
+```
+
+#### Resumo da resposta
+
+O NotebookLM apresentou uma visão abrangente das possíveis causas para problemas de acesso a aplicações web, agrupando fatores relacionados a:
+
+- JavaScript;
+- Rede;
+- Segurança;
+- Servidor;
+- Desempenho;
+- Cache e cookies.
+
+Além disso, recomendou a utilização do Chrome DevTools como principal ferramenta de investigação, destacando painéis como **Console**, **Network**, **Security**, **Application**, **Elements** e **Sources**.
+
+#### Avaliação
+
+| Critério | Avaliação | Observação |
+|----------|-----------|------------|
+| Precisão técnica | ✅ Boa | As causas apresentadas são coerentes com a base de conhecimento. |
+| Uso das fontes | ✅ Excelente | Utilizou corretamente as documentações disponíveis. |
+| Estrutura do diagnóstico | ⚠️ Parcial | A resposta não apresentou uma sequência lógica de investigação. |
+| Aplicação ao Suporte N2 | ⚠️ Parcial | A resposta possui caráter descritivo, semelhante a um artigo técnico. |
+| Coleta de evidências | ❌ Insuficiente | Não realizou perguntas para compreender o cenário antes de sugerir hipóteses. |
+
+#### Aprendizados
+
+O experimento demonstrou que perguntas muito genéricas tendem a produzir respostas igualmente amplas. Embora tecnicamente corretas, elas não reproduzem o fluxo de trabalho esperado durante um atendimento de Suporte N2.
+
+A principal limitação observada foi a ausência de um processo estruturado de investigação, iniciando diretamente pela apresentação de possíveis causas sem coletar informações sobre o incidente.
+
+#### Refinamento para o próximo experimento
+
+No próximo teste será utilizada a técnica de **Role Prompting**, definindo explicitamente que o NotebookLM deve atuar como um Analista de Suporte N2 especializado em aplicações web. O objetivo é verificar se essa mudança torna o diagnóstico mais orientado ao processo de investigação utilizado em atendimentos reais.
+
 > **Os resultados detalhados de cada experimento serão apresentados nas próximas atualizações deste projeto.**
 
 ---
