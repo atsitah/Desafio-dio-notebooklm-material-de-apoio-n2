@@ -170,8 +170,6 @@ A principal limitação observada foi a ausência de um processo estruturado de 
 
 No próximo teste será utilizada a técnica de **Role Prompting**, definindo explicitamente que o NotebookLM deve atuar como um Analista de Suporte N2 especializado em aplicações web. O objetivo é verificar se essa mudança torna o diagnóstico mais orientado ao processo de investigação utilizado em atendimentos reais.
 
-> **Os resultados detalhados de cada experimento serão apresentados nas próximas atualizações deste projeto.**
-
 ---
 
 # 8. Cicatrizes
