@@ -365,6 +365,122 @@ O próximo experimento deve explorar técnicas de:
 - Árvores de decisão;
 - Definição de critérios objetivos de escalonamento;
 - Separação entre ações realizadas pelo usuário e ações realizadas pelo Analista N2.
+
+## Experimento 4 — Árvore de Decisão para Diagnóstico
+
+### Objetivo
+
+Avaliar a capacidade do NotebookLM em transformar um procedimento de troubleshooting em um fluxo de decisão, permitindo que um Analista de Suporte N2 conduza a investigação com base nas evidências coletadas durante o atendimento.
+
+Após os experimentos anteriores, foi identificado que uma resposta estruturada ainda poderia evoluir para um modelo mais próximo da tomada de decisão realizada durante um atendimento real.
+
+Neste experimento, o objetivo foi verificar se a IA conseguiria criar uma sequência lógica de investigação, relacionando perguntas, evidências, testes e critérios de resolução ou escalonamento.
+
+### Técnica aplicada
+
+Foram utilizadas as seguintes técnicas de Engenharia de Prompt:
+
+- **Role Prompting:** manutenção da IA como Analista de Suporte N2 especializado em troubleshooting de aplicações web.
+- **Decision Tree Prompting:** criação de uma árvore de decisão baseada em cenários e resultados possíveis.
+- **Conditional Prompting:** definição de ações diferentes conforme as evidências encontradas.
+- **Prioritização de testes:** solicitação para iniciar por validações de menor complexidade e maior probabilidade de resolução.
+
+### Prompt utilizado
+
+```text
+Você é um Analista de Suporte N2 especializado em troubleshooting de aplicações web.
+
+Crie uma árvore de decisão para diagnosticar problemas de acesso a sistemas web utilizando exclusivamente a base de conhecimento disponível.
+
+O cenário inicial é:
+
+"Um usuário informa que não consegue acessar um sistema web. A internet funciona normalmente e outros usuários conseguem acessar a aplicação."
+
+Estruture a árvore seguindo esta lógica:
+
+- Pergunta inicial ou validação realizada;
+- Possíveis respostas encontradas;
+- Próximo teste ou ação recomendada;
+- Evidência esperada;
+- Critério para continuar investigando, resolver ou escalonar.
+
+Priorize inicialmente testes de menor complexidade e maior probabilidade de resolução.
+
+A árvore deve diferenciar:
+
+- problemas relacionados ao usuário;
+- problemas relacionados ao navegador;
+- problemas relacionados à rede;
+- problemas relacionados à aplicação.
+
+O objetivo é criar um fluxo que possa ser utilizado por um Analista de Suporte N2 durante um atendimento real.
+```
+
+### Resumo da resposta
+
+A resposta apresentou uma evolução significativa, criando um fluxo de investigação baseado em decisões.
+
+O NotebookLM organizou o diagnóstico em quatro grandes áreas:
+
+1. Problemas relacionados ao usuário;
+2. Problemas relacionados ao navegador;
+3. Problemas relacionados à rede e segurança;
+4. Problemas relacionados à aplicação.
+
+A IA passou a relacionar:
+
+- perguntas iniciais;
+- respostas possíveis;
+- próximos testes;
+- evidências esperadas;
+- critérios de resolução ou escalonamento.
+
+Entre os principais pontos apresentados:
+
+- Validação através de navegador alternativo e modo anônimo;
+- Análise de cache, cookies e armazenamento local;
+- Investigação através do Chrome DevTools;
+- Identificação de códigos HTTP;
+- Análise de certificados SSL/TLS;
+- Definição de cenários para escalonamento.
+
+### Avaliação
+
+| Critério | Avaliação | Observação |
+|---|---|---|
+| Organização lógica | ✅ Excelente | A resposta apresenta uma sequência clara de investigação. |
+| Aplicação ao Suporte N2 | ✅ Excelente | O fluxo se aproxima de um procedimento operacional real. |
+| Tomada de decisão | ✅ Excelente | As ações variam conforme as evidências encontradas. |
+| Priorização dos testes | ✅ Boa | A resposta inicia por validações simples antes de análises avançadas. |
+| Critérios de escalonamento | ✅ Boa | Foram definidos cenários para encaminhamento técnico. |
+
+### Comparação com experimentos anteriores
+
+| Experimento | Técnica aplicada | Resultado |
+|---|---|---|
+| Prompt 1 | Pergunta genérica | Resposta técnica ampla, sem fluxo operacional. |
+| Prompt 2 | Role Prompting + Contexto | Resposta direcionada ao papel de Analista N2. |
+| Prompt 3 | Estruturação de saída | Criação de um procedimento de troubleshooting. |
+| Prompt 4 | Árvore de decisão | Fluxo investigativo orientado por evidências. |
+
+### Cicatriz
+
+Apesar da evolução apresentada, algumas limitações foram identificadas:
+
+- A árvore de decisão ainda possui alguns caminhos técnicos que dependem de conhecimento avançado do analista.
+- Algumas hipóteses poderiam possuir uma priorização baseada em frequência de ocorrência e impacto.
+- Alguns critérios de resolução poderiam ser mais objetivos, indicando exatamente quais evidências confirmam a correção do problema.
+- A separação entre ações realizadas pelo usuário final e ações executadas pelo Analista N2 poderia ser mais clara.
+
+### Próximo refinamento
+
+O próximo experimento deve explorar a criação de um assistente interativo, onde a IA:
+
+- realize perguntas progressivas ao analista;
+- avalie as respostas recebidas;
+- sugira o próximo passo da investigação;
+- justifique a hipótese selecionada;
+- recomende resolução ou escalonamento.
 ---
 
 # 8. Cicatrizes
