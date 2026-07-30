@@ -3,7 +3,7 @@
 
 
 ## 1. Sobre o Projeto
-### Este Repositório documenta o processo de cosntrução de uma base de conhecimento no NotebookLM, onde foram aplicadas técnicas de Engenharia de Prompt para apoiar no diagnóstico de problemas de acesso a aplicações web.
+### Este Repositório documenta o processo de construção de uma base de conhecimento no NotebookLM, onde foram aplicadas técnicas de Engenharia de Prompt para apoiar no diagnóstico de problemas de acesso a aplicações web.
 
 ## 2. Contexto e Objetivos
 
