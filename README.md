@@ -481,26 +481,117 @@ O próximo experimento deve explorar a criação de um assistente interativo, on
 - sugira o próximo passo da investigação;
 - justifique a hipótese selecionada;
 - recomende resolução ou escalonamento.
+
+## Experimento 5 — Assistente Interativo de Diagnóstico
+
+### Objetivo
+
+Avaliar a capacidade do NotebookLM em atuar como um assistente de investigação durante um atendimento real, conduzindo o Analista de Suporte N2 através de perguntas progressivas e coleta estruturada de evidências.
+
+Nos experimentos anteriores, a IA evoluiu de respostas técnicas para procedimentos estruturados. Neste experimento, o objetivo foi validar se o modelo conseguiria assumir um comportamento mais próximo de um analista auxiliar, evitando apresentar diagnósticos prematuros e conduzindo a investigação com base em evidências.
+
+### Técnica aplicada
+
+Foram utilizadas as seguintes técnicas de Engenharia de Prompt:
+
+- **Interactive Prompting:** solicitação para que a IA conduzisse a investigação através de uma interação progressiva.
+- **Socratic Prompting:** utilização de perguntas direcionadas antes da apresentação de hipóteses.
+- **Context Management:** manutenção do cenário inicial durante todo o processo de diagnóstico.
+- **Evidence-Based Troubleshooting:** orientação para fundamentar decisões através de evidências coletadas.
+
+### Prompt utilizado
+
+```text
+Você é um Assistente de Suporte N2 especializado em troubleshooting de aplicações web.
+
+Sua função é auxiliar um Analista de Suporte durante a investigação de incidentes de acesso a sistemas web.
+
+Utilize exclusivamente a base de conhecimento disponível.
+
+Cenário inicial:
+
+"Um usuário informa que não consegue acessar um sistema web. A conexão com a internet funciona normalmente e outros usuários conseguem acessar a aplicação."
+
+Sua abordagem deve seguir um processo investigativo.
+
+Não apresente uma solução imediata.
+
+Conduza o diagnóstico através de perguntas progressivas.
+
+Ao final da investigação, apresente:
+- Diagnóstico mais provável;
+- Evidências que sustentam a hipótese;
+- Ação recomendada;
+- Decisão entre resolução ou escalonamento.
+```
+
+### Resumo da resposta
+
+O NotebookLM iniciou a interação assumindo o papel de Analista de Suporte N2 e conduziu o atendimento através de perguntas investigativas.
+
+A IA iniciou descartando problemas de infraestrutura global, considerando que outros usuários conseguiam acessar a aplicação, e direcionou a investigação para variáveis locais do usuário.
+
+As primeiras perguntas sugeridas foram:
+
+- O erro ocorre somente no computador principal ou também em outro dispositivo?
+- Qual mensagem ou código de erro aparece no navegador?
+- O problema persiste em uma aba anônima?
+
+Após a coleta inicial, a IA solicitou evidências técnicas:
+
+- Captura de tela do erro;
+- Logs do Console do Chrome DevTools;
+- Informações do painel Network;
+- Evidências do painel Security.
+
+### Avaliação
+
+| Critério | Avaliação | Observação |
+|---|---|---|
+| Comportamento investigativo | ✅ Excelente | A IA conduz a investigação antes de sugerir soluções. |
+| Coleta de informações | ✅ Excelente | As perguntas iniciais são relevantes para isolamento do problema. |
+| Uso de evidências | ✅ Excelente | O diagnóstico é baseado em informações coletadas. |
+| Aplicação em atendimento real | ✅ Excelente | O comportamento se aproxima de um assistente de suporte. |
+| Autonomia de diagnóstico | ⚠️ Parcial | A IA ainda depende das respostas fornecidas pelo analista. |
+
+### Cicatriz
+
+Apesar da evolução significativa, algumas limitações foram identificadas:
+
+- A IA ainda depende da qualidade das respostas fornecidas pelo usuário ou analista.
+- O fluxo pode ser interrompido caso informações importantes não sejam coletadas.
+- Algumas perguntas poderiam possuir uma ordem baseada em impacto e probabilidade.
+- Ainda é necessário validar como a IA se comporta diante de respostas incompletas ou contraditórias.
+
+### Resultado do experimento
+
+Este experimento demonstrou que a combinação de contexto, definição de papel, estrutura de resposta e interação progressiva permite transformar o NotebookLM em uma ferramenta de apoio ao diagnóstico técnico.
+
+O resultado final aproxima-se do objetivo inicial do projeto: criar um assistente capaz de auxiliar Analistas de Suporte N2 na investigação estruturada de problemas de acesso a sistemas web.
+
+### Sugestões de continuidade geradas pela IA
+
+Durante a interação, o NotebookLM sugeriu perguntas complementares para aprofundar a investigação:
+
+- O erro ocorre apenas no computador principal do usuário?
+- Qual é a mensagem exata exibida no navegador?
+- O problema persiste ao tentar o acesso em aba anônima?
+
+Essas sugestões demonstram que a IA conseguiu identificar informações críticas para o isolamento da causa raiz.
 ---
 
-# 8. Cicatrizes
-
-Nesta seção serão documentadas as principais dificuldades encontradas durante o desenvolvimento dos prompts, bem como os ajustes realizados para melhorar a qualidade das respostas geradas pelo NotebookLM.
-
----
-
-# 9. Prompts Reutilizáveis
+# 8. Prompts Reutilizáveis
 
 Serão disponibilizados os prompts refinados durante o projeto, permitindo sua reutilização em novos estudos ou em cenários semelhantes de diagnóstico de problemas de acesso a aplicações web.
 
 ---
 
-# 10. Glossário
+# 9. Glossário
 
 Esta seção reunirá os principais conceitos técnicos utilizados ao longo do projeto, servindo como material de consulta rápida para futuras revisões.
 
 ---
 
-# 11. Conclusão
+# 10. Conclusão
 
 Ao término do projeto serão apresentados os principais aprendizados obtidos durante a construção da base de conhecimento, a evolução dos prompts e uma análise sobre o potencial do NotebookLM como ferramenta de apoio ao diagnóstico de problemas de acesso a aplicações web.
