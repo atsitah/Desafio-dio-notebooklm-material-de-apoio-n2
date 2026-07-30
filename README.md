@@ -581,17 +581,296 @@ Essas sugestões demonstram que a IA conseguiu identificar informações crític
 ---
 
 # 8. Prompts Reutilizáveis
+# 9. Prompts Reutilizáveis
 
-Serão disponibilizados os prompts refinados durante o projeto, permitindo sua reutilização em novos estudos ou em cenários semelhantes de diagnóstico de problemas de acesso a aplicações web.
-
----
-
-# 9. Glossário
-
-Esta seção reunirá os principais conceitos técnicos utilizados ao longo do projeto, servindo como material de consulta rápida para futuras revisões.
+Os prompts abaixo foram desenvolvidos para serem utilizados durante atendimentos reais de Suporte N2. O analista deve preencher as informações já coletadas no chamado antes de enviar o prompt ao NotebookLM.
 
 ---
 
-# 10. Conclusão
+# Prompt 1 — Diagnóstico Inicial de Acesso Web
 
-Ao término do projeto serão apresentados os principais aprendizados obtidos durante a construção da base de conhecimento, a evolução dos prompts e uma análise sobre o potencial do NotebookLM como ferramenta de apoio ao diagnóstico de problemas de acesso a aplicações web.
+### Objetivo
+
+Realizar uma análise inicial do incidente utilizando as informações registradas no chamado.
+
+### Prompt
+
+```text
+Você é um Analista de Suporte N2 especializado em troubleshooting de aplicações web.
+
+Analise exclusivamente utilizando a base de conhecimento disponível.
+
+Dados do chamado
+
+Descrição do problema:
+[Descrever o relato do usuário]
+
+URL acessada:
+[URL]
+
+Mensagem de erro apresentada:
+[Mensagem ou código]
+
+Outros usuários conseguem acessar?
+[Sim/Não]
+
+O problema ocorre em apenas um usuário?
+[Sim/Não]
+
+Navegador utilizado:
+[Chrome / Edge / Firefox...]
+
+Versão do navegador:
+[Versão]
+
+Sistema operacional:
+[Windows/Linux/macOS]
+
+O teste em aba anônima foi realizado?
+[Sim/Não]
+Resultado:
+[Descrição]
+
+O teste em outro navegador foi realizado?
+[Sim/Não]
+Resultado:
+[Descrição]
+
+Informações adicionais:
+[Outras evidências]
+
+Com base nessas informações:
+
+- identifique as hipóteses mais prováveis;
+- informe quais informações ainda precisam ser coletadas;
+- indique os próximos testes;
+- explique o motivo de cada teste;
+- informe quais evidências deverão ser anexadas ao chamado;
+- indique se já existem informações suficientes para resolução ou se a investigação deve continuar.
+```
+
+---
+
+# Prompt 2 — Análise de Erros HTTP
+
+### Objetivo
+
+Interpretar os códigos HTTP encontrados durante o atendimento.
+
+### Prompt
+
+```text
+Você é um Analista de Suporte N2 especializado em aplicações web.
+
+Utilize exclusivamente a base de conhecimento disponível.
+
+Dados coletados
+
+URL:
+[URL]
+
+Método HTTP:
+[GET / POST / PUT...]
+
+Código(s) HTTP encontrado(s):
+[200, 302, 401, 403, 404, 500...]
+
+Recurso afetado:
+[/login /api/auth ...]
+
+Mensagem apresentada:
+[Mensagem]
+
+Os demais recursos carregam normalmente?
+[Sim/Não]
+
+Captura do painel Network disponível?
+[Sim/Não]
+
+Com base nessas informações:
+
+- explique o significado de cada código HTTP;
+- informe as causas mais prováveis;
+- identifique quais hipóteses possuem maior probabilidade;
+- indique quais testes ainda devem ser executados;
+- informe quais evidências técnicas ainda precisam ser coletadas;
+- conclua se o incidente pode ser tratado pelo Suporte N2 ou deve ser escalonado.
+```
+
+---
+
+# Prompt 3 — Avaliação de Evidências do Chrome DevTools
+
+### Objetivo
+
+Analisar as evidências técnicas coletadas durante o diagnóstico.
+
+### Prompt
+
+```text
+Você é um Analista de Suporte N2 especializado em troubleshooting de aplicações web.
+
+Analise exclusivamente utilizando a base de conhecimento disponível.
+
+Dados coletados
+
+Console
+
+Mensagens de erro:
+[Colar erros]
+
+Network
+
+Status HTTP encontrados:
+[Lista]
+
+Requisições com falha:
+[Descrição]
+
+Tempo de resposta:
+[Tempo]
+
+Application
+
+Cookies limpos?
+[Sim/Não]
+
+Cache limpo?
+[Sim/Não]
+
+Local Storage:
+[Descrição]
+
+Security
+
+Certificado válido?
+[Sim/Não]
+
+Mensagem apresentada:
+[Descrição]
+
+Informações adicionais
+
+[Testes realizados]
+
+Com base nas evidências:
+
+- explique o significado de cada informação apresentada;
+- identifique as hipóteses mais prováveis;
+- descarte hipóteses incompatíveis com as evidências;
+- informe quais testes ainda precisam ser executados;
+- indique quais evidências faltam para concluir o diagnóstico;
+- apresente uma recomendação técnica para continuidade do atendimento.
+```
+
+---
+
+# Prompt 4 — Decisão de Resolução ou Escalonamento
+
+### Objetivo
+
+Determinar se o incidente pode ser resolvido pelo Suporte N2 ou deve ser encaminhado para outro time.
+
+### Prompt
+
+```text
+Você é um Analista de Suporte N2 especializado em troubleshooting de aplicações web.
+
+Utilize exclusivamente a base de conhecimento disponível.
+
+Resumo do chamado
+
+Descrição do incidente:
+[Resumo]
+
+Hipótese principal:
+[Hipótese]
+
+Testes executados:
+[Listar]
+
+Resultados obtidos:
+[Listar]
+
+Evidências anexadas:
+
+- [Screenshots]
+- [Logs]
+- [Console]
+- [Network]
+- [Security]
+
+Código(s) HTTP:
+[Listar]
+
+Mensagem de erro:
+[Listar]
+
+Tentativas de solução realizadas:
+[Listar]
+
+Com base nessas informações:
+
+- avalie se todos os testes necessários foram executados;
+- identifique possíveis lacunas na investigação;
+- informe se existem novas validações antes do escalonamento;
+- apresente a hipótese mais provável;
+- justifique tecnicamente sua conclusão;
+- informe se o chamado deve ser resolvido pelo Suporte N2 ou escalonado;
+- caso seja necessário escalonar, indique qual equipe deve receber o chamado;
+- gere um resumo técnico que possa ser copiado para o ticket do incidente.
+```
+
+---
+
+## Observação
+
+Os campos entre colchetes (`[ ]`) devem ser preenchidos pelo Analista de Suporte N2 com as informações coletadas durante o atendimento. Quanto mais completas forem as evidências fornecidas, maior tende a ser a precisão das análises produzidas pelo NotebookLM.
+
+---
+
+# 10. Glossário
+
+Este glossário apresenta os principais conceitos relacionados à Engenharia de Prompt e às ferramentas utilizadas durante o desenvolvimento deste projeto.
+
+| Conceito | Definição |
+|----------|-----------|
+| **Base de Conhecimento** | Conjunto de documentos utilizados pelo NotebookLM como fonte para geração das respostas. Neste projeto, foi composta por documentações oficiais sobre troubleshooting, aplicações web e gerenciamento de incidentes. |
+| **Caderno Temático** | Espaço criado no NotebookLM que reúne documentos relacionados a um único assunto, permitindo consultas contextualizadas pela IA. |
+| **Contexto (Context Window)** | Informações fornecidas à IA para orientar sua interpretação do problema e produzir respostas mais relevantes. |
+| **Engenharia de Prompt (Prompt Engineering)** | Processo de criação, refinamento e otimização de instruções fornecidas à IA para melhorar a qualidade, consistência e utilidade das respostas. |
+| **Evidência** | Informação técnica coletada durante um diagnóstico, utilizada para confirmar ou descartar hipóteses antes da tomada de decisão. |
+| **Hipótese** | Possível causa de um incidente formulada a partir das evidências disponíveis e validada durante o processo de investigação. |
+| **Iteração** | Processo de realizar sucessivos refinamentos em um prompt com o objetivo de melhorar a qualidade das respostas produzidas pela IA. |
+| **NotebookLM** | Ferramenta de Inteligência Artificial desenvolvida pelo Google que utiliza documentos enviados pelo usuário como única fonte de conhecimento para responder perguntas, resumir conteúdos e apoiar estudos. |
+| **Prompt** | Instrução enviada à IA contendo contexto, objetivo e regras para orientar a resposta esperada. |
+| **Prompt Template** | Modelo reutilizável de prompt contendo campos que podem ser preenchidos pelo analista conforme o cenário do atendimento. |
+| **Refinamento de Prompt** | Processo de modificar um prompt com base na análise das respostas anteriores, tornando as instruções mais claras e específicas. |
+| **Role Prompting** | Técnica de Engenharia de Prompt que consiste em atribuir um papel específico à IA (por exemplo, "Você é um Analista de Suporte N2") para direcionar seu comportamento e especializar as respostas. |
+| **Suporte N2** | Segundo nível de suporte responsável pela investigação técnica de incidentes, validação de hipóteses, coleta de evidências e decisão sobre resolução ou escalonamento. |
+| **Troubleshooting** | Processo estruturado de investigação utilizado para identificar, analisar e solucionar problemas técnicos por meio de testes e evidências. |
+
+## Ferramentas Utilizadas
+
+| Ferramenta | Finalidade |
+|------------|------------|
+| **NotebookLM** | Construção da base de conhecimento e realização dos experimentos de Engenharia de Prompt. |
+| **Google Chrome DevTools** | Referência para investigação de problemas de aplicações web e coleta de evidências técnicas. |
+| **MDN Web Docs** | Fonte oficial de documentação sobre tecnologias web utilizadas como base de conhecimento. |
+| **Microsoft Learn** | Documentação oficial utilizada para consultas sobre troubleshooting e resolução de problemas. |
+| **Cloudflare Developers** | Fonte de referência para conceitos relacionados a SSL/TLS e segurança em aplicações web. |
+| **IT Process Maps** | Material utilizado para fundamentar boas práticas de gerenciamento de incidentes e processos de suporte técnico. |
+
+---
+
+## 11. Conclusão
+
+O desenvolvimento deste projeto demonstrou que a qualidade das respostas produzidas por uma Inteligência Artificial depende diretamente da forma como as instruções são elaboradas. Ao longo dos experimentos realizados no NotebookLM, foi possível observar a evolução das respostas à medida que técnicas de Engenharia de Prompt foram aplicadas de forma incremental, transformando respostas inicialmente genéricas em fluxos de investigação estruturados e orientados ao contexto de Suporte N2.
+
+Além de consolidar conhecimentos sobre diagnóstico de problemas de acesso a aplicações web, este projeto permitiu construir uma base de conhecimento especializada, composta por documentações técnicas confiáveis e complementada por um conjunto de prompts reutilizáveis voltados para situações reais de atendimento.
+
+Os experimentos também evidenciaram a importância de orientar a IA por meio de contexto, definição de papéis, estrutura de resposta e regras claras de comportamento. Em vez de buscar respostas prontas, a proposta foi desenvolver um assistente capaz de apoiar o raciocínio investigativo do analista, incentivando a coleta de evidências, a validação de hipóteses e a tomada de decisões fundamentadas.
+
+Como resultado, o projeto entrega um material que pode servir tanto como guia de estudos quanto como apoio operacional para Analistas de Suporte N2, contribuindo para diagnósticos mais consistentes, padronização do processo de troubleshooting e maior eficiência na condução de incidentes relacionados ao acesso a aplicações web.
+
+Como evolução futura, a base de conhecimento poderá ser ampliada com novos cenários de troubleshooting, estudos de caso, integrações com outras tecnologias e novos experimentos de Engenharia de Prompt, tornando o assistente cada vez mais especializado e aderente às rotinas de suporte técnico.
