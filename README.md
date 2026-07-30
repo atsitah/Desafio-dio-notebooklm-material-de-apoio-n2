@@ -266,6 +266,105 @@ Durante a interação, a própria IA sugeriu novos caminhos de investigação:
 - Quais códigos de erro no painel Network indicam falha local?
 - Como identificar problemas de certificado usando o painel Security?
 
+## Experimento 3 — Estruturação de Fluxo de Troubleshooting
+
+### Objetivo
+
+Avaliar como a definição de uma estrutura de resposta influencia a capacidade do NotebookLM em transformar conhecimento técnico em um procedimento operacional aplicável ao atendimento de incidentes.
+
+Após os experimentos anteriores, foi identificado que respostas técnicas isoladas não eram suficientes para representar o processo de investigação realizado por um Analista de Suporte N2.
+
+Neste experimento foi solicitado que a IA organizasse o diagnóstico em etapas, simulando um fluxo real de troubleshooting.
+
+### Técnica aplicada
+
+Foram utilizadas as seguintes técnicas de Engenharia de Prompt:
+
+- **Role Prompting:** manutenção da definição da IA como Analista de Suporte N2 especializado em aplicações web.
+- **Contextualização de cenário:** utilização de um caso realista de falha de acesso.
+- **Output Formatting:** definição explícita da estrutura esperada da resposta.
+- **Process Prompting:** solicitação de um fluxo sequencial de investigação.
+
+### Prompt utilizado
+
+```text
+Você é um Analista de Suporte N2 especializado em diagnóstico de aplicações web.
+
+Um usuário informa que não consegue acessar um sistema web. A conexão com a internet está funcionando normalmente e outros usuários conseguem acessar a aplicação.
+
+Utilizando exclusivamente a base de conhecimento disponível, crie um fluxo estruturado de troubleshooting.
+
+Organize a resposta seguindo este formato:
+
+- Perguntas iniciais que devem ser feitas ao usuário;
+- Informações que devem ser coletadas;
+- Hipóteses organizadas da mais provável para a menos provável;
+- Testes técnicos que devem ser executados;
+- Evidências que devem ser coletadas;
+- Critérios para decidir quando resolver ou escalonar o incidente.
+
+O objetivo é criar um procedimento que possa ser utilizado por um Analista de Suporte N2 durante um atendimento real.
+```
+
+### Resumo da resposta
+
+A resposta apresentou uma evolução em relação aos experimentos anteriores, transformando o conhecimento técnico em um fluxo organizado de investigação.
+
+O NotebookLM estruturou o diagnóstico em seis etapas:
+
+1. Perguntas iniciais ao usuário;
+2. Coleta de informações do ambiente;
+3. Priorização das hipóteses;
+4. Execução de testes técnicos;
+5. Registro das evidências;
+6. Critérios para resolução ou escalonamento.
+
+Entre os principais pontos apresentados:
+
+- Validação de mensagens de erro e códigos HTTP;
+- Testes em diferentes navegadores;
+- Análise de cookies, cache e armazenamento local;
+- Investigação utilizando Chrome DevTools;
+- Coleta de logs do Console e Network;
+- Definição de cenários para escalonamento.
+
+### Avaliação
+
+| Critério | Avaliação | Observação |
+|---|---|---|
+| Precisão técnica | ✅ Excelente | As recomendações estão alinhadas com as fontes utilizadas. |
+| Estrutura operacional | ✅ Excelente | A resposta passou a representar um fluxo de atendimento. |
+| Aplicação ao Suporte N2 | ✅ Excelente | O conteúdo pode ser adaptado para um procedimento interno. |
+| Priorização das hipóteses | ⚠️ Boa | A IA classificou causas prováveis, porém sem considerar impacto ou frequência. |
+| Critérios de escalonamento | ✅ Boa | Foram definidos caminhos de encaminhamento. |
+
+### Comparação com experimentos anteriores
+
+Este experimento apresentou uma evolução significativa:
+
+| Experimento | Técnica aplicada | Resultado |
+|---|---|---|
+| Prompt 1 | Pergunta genérica | Resposta técnica e abrangente, porém sem fluxo operacional. |
+| Prompt 2 | Role Prompting + Contexto | Resposta mais próxima do papel de um Analista N2. |
+| Prompt 3 | Estruturação de resposta | Criação de um fluxo organizado de troubleshooting. |
+
+### Cicatriz
+
+Apesar da evolução da resposta, foram identificadas algumas limitações:
+
+- A priorização das hipóteses ainda é baseada apenas em uma ordem textual, sem considerar probabilidade, impacto ou frequência.
+- Alguns testes técnicos possuem nível de detalhamento elevado para um atendimento inicial.
+- A IA ainda não diferencia claramente testes de baixa complexidade para o usuário final e análises avançadas realizadas pelo suporte.
+- O fluxo poderia apresentar pontos de decisão mais claros antes do escalonamento.
+
+### Próximo refinamento
+
+O próximo experimento deve explorar técnicas de:
+
+- Priorização de hipóteses;
+- Árvores de decisão;
+- Definição de critérios objetivos de escalonamento;
+- Separação entre ações realizadas pelo usuário e ações realizadas pelo Analista N2.
 ---
 
 # 8. Cicatrizes
